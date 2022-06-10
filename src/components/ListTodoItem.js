@@ -1,9 +1,9 @@
 import { Button, Checkbox } from "@chakra-ui/react";
 
-function List({ dataList, onCheck, onDelete }) {
+function ListTodoItem({ dataList, onCheck, onDelete }) {
   const item = dataList.map((item) => {
     return (
-      <li style={{ display: "flex", marginBottom: "0.1rem" }} key={item.id}>
+      <li className="listItem" key={item.id}>
         <Checkbox
           defaultChecked={item.checked}
           onChange={() => onCheck(item.id)}
@@ -16,8 +16,7 @@ function List({ dataList, onCheck, onDelete }) {
           onClick={() => onDelete(item.id)}
           colorScheme={"red"}
         >
-          {" "}
-          Delete{" "}
+          {" Delete "}
         </Button>
       </li>
     );
@@ -25,4 +24,4 @@ function List({ dataList, onCheck, onDelete }) {
   return <>{item}</>;
 }
 
-export default List;
+export default ListTodoItem;
