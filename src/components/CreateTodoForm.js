@@ -1,16 +1,18 @@
 import { Input } from "@chakra-ui/react";
 import React, { useRef } from "react";
+import { useTodo } from "./use-Todo";
 
-function CreateTodoForm({ onSubmit }) {
+function CreateTodoForm() {
+  const {handleSubmit} = useTodo();
   const inputRef = useRef();
-  function handleSubmit(e) {
+  function handleFormSubmit(e) {
     if (inputRef.current.value.trim() === "") return;
     e.preventDefault();
-    onSubmit(inputRef.current.value);
+    handleSubmit(inputRef.current.value);
     inputRef.current.value = "";
   }
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleFormSubmit}>
       <label htmlFor="input">TODO LIST </label>
       <Input id="input" placeholder="add a task..." ref={inputRef}></Input>
     </form>

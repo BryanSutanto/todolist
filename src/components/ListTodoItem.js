@@ -1,19 +1,21 @@
 import { Button, Checkbox } from "@chakra-ui/react";
+import { useTodo } from "./use-Todo";
 
-function ListTodoItem({ dataList, onCheck, onDelete }) {
+function ListTodoItem({ dataList }) {
+  const {handleCheck, handleDelete} = useTodo()
   const item = dataList.map((item) => {
     return (
       <li className="listItem" key={item.id}>
         <Checkbox
           defaultChecked={item.checked}
-          onChange={() => onCheck(item.id)}
+          onChange={() => handleCheck(item.id)}
         >
           {item.text}
         </Checkbox>
         <Button
           size="sm"
           ml="auto"
-          onClick={() => onDelete(item.id)}
+          onClick={() => handleDelete(item.id)}
           colorScheme={"red"}
         >
           {" Delete "}
